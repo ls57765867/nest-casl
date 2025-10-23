@@ -1,0 +1,6 @@
+db:
+    host: '39.105.174.75'
+    port: 5175
+    username: 'root'
+    password: 'crouch11'
+    database: 'nestjs'
