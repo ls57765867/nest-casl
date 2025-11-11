@@ -9,6 +9,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config'
             inject: [ConfigService],
             useFactory: (configService: ConfigService) => {
                 const db = configService.get('db')
+                const isDev = process.env.NODE_ENV === 'development'
                 return {
                     type: 'mysql',
                     host: db.host,
@@ -16,10 +17,10 @@ import { ConfigModule, ConfigService } from '@nestjs/config'
                     username: db.username,
                     password: db.password,
                     database: db.database,
-                    entities: [__dirname + '/../**/*.entity{.ts,.js}'],
-                    synchronize: process.env.NODE_ENV !== 'production',
+                    entities: [__dirname + '../../**/*.entity{.ts,.js}'],
+                    synchronize: isDev,
                     autoLoadEntities: true,
-                    logging: process.env.NODE_ENV === 'development',
+                    logging: isDev,
                 }
             },
         }),

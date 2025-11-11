@@ -3,7 +3,10 @@ import { AppModule } from './app.module'
 import { ValidationPipe, Logger as nestLogger } from '@nestjs/common'
 import { Logger } from 'nestjs-pino'
 
+import { initializeTransactionalContext } from 'typeorm-transactional' //事务
+
 async function bootstrap() {
+    initializeTransactionalContext()
     const app = await NestFactory.create(AppModule)
     app.setGlobalPrefix('/api/')
     const logger = new nestLogger()

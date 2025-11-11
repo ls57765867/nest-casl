@@ -1,10 +1,6 @@
 import { DataSource } from 'typeorm'
 import { join } from 'path'
 import { ConfigLoader } from './config/config.module' // ✅ 直接复用
-import { User } from './user/user.entity'
-import { Profile } from './user/profile.entity'
-import { Roles } from './roles/roles.entity'
-import { Logs } from './logs/logs.entity'
 
 // ✅ 1. 读取配置
 const NODE_ENV = process.env.NODE_ENV ?? 'development'
@@ -19,8 +15,8 @@ export const AppDataSource = new DataSource({
     username: db.username,
     password: db.password,
     database: db.database,
-    entities: [User, Profile, Roles, Logs],
-    migrations: [join(__dirname, '/migrations/*.{ts,js}')],
+    entities: [join(__dirname, '../**/*.entity.{ts,js}')],
+    migrations: [join(__dirname, './migrations/*.{ts,js}')],
     subscribers: [],
     synchronize: false,
     logging: process.env.NODE_ENV === 'development',
