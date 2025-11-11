@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, CreateDateColumn, UpdateDateColumn, DeleteDateColumn } from 'typeorm'
-import { Role } from '../../roles/role.entity'
+import { Role } from '../../role/entities/role.entity'
 
 @Entity('menus')
 export class Menu {

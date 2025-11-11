@@ -12,11 +12,11 @@ import {
 } from 'typeorm'
 import { Profile } from './profile.entity'
 import { Logs } from '../logs/logs.entity'
-import { Role } from '../roles/role.entity'
+import { Role } from '../role/entities/role.entity'
 import { Exclude } from 'class-transformer'
 import { Dept } from '../dept/entities/dept.entity'
 
-@Entity()
+@Entity('users')
 export class User {
     @PrimaryGeneratedColumn()
     id: number

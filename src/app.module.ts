@@ -12,10 +12,13 @@ import { AppLoggerModule } from './logger/logger.module'
 import { EnvConfigModule } from './config/config.module'
 import { JwtAuthGuard } from './auth/jwt-auth.guard'
 import { TransformInterceptor } from './interceptors/transform.interceptor'
+import { AuditInterceptor } from './interceptors/audit.interceptor'
 import { DeptModule } from './dept/dept.module'
 
 import { addTransactionalDataSource } from 'typeorm-transactional'
 import { DataSource } from 'typeorm'
+import { RoleModule } from './role/role.module'
+import { AppClsModule } from './common/cls/cls.module'
 
 @Module({
     imports: [
@@ -24,7 +27,9 @@ import { DataSource } from 'typeorm'
         AppLoggerModule, // ✅ 日志模块
         UserModule, // ✅ 用户模块
         MenusModule, // ✅ 菜单模块
-        DeptModule,
+        DeptModule, // ✅ 部门模块
+        RoleModule, // ✅ 角色模块
+        AppClsModule, // ✅ 审计模块
     ],
     controllers: [AppController],
     providers: [
@@ -36,8 +41,13 @@ import { DataSource } from 'typeorm'
         },
         {
             provide: APP_INTERCEPTOR,
-            useClass: TransformInterceptor, // ✅ 全局拦截器
+            useClass: AuditInterceptor, // ✅ 全局审计拦截器
         },
+        {
+            provide: APP_INTERCEPTOR,
+            useClass: TransformInterceptor, // ✅ 全局响应拦截器
+        },
+
         {
             provide: APP_PIPE,
             useValue: new ValidationPipe({

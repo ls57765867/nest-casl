@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common'
 import { TypeOrmModule } from '@nestjs/typeorm'
 import { ConfigModule, ConfigService } from '@nestjs/config'
+import { AuditSubscriber } from '../common/subscribers/audit.subscriber'
 
 @Module({
     imports: [
@@ -21,6 +22,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config'
                     synchronize: isDev,
                     autoLoadEntities: true,
                     logging: isDev,
+                    subscribers: [AuditSubscriber],
                 }
             },
         }),

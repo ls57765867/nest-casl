@@ -1,12 +1,11 @@
-import { Menu } from '../menus/entities/menu.entity'
-import { User } from '../user/user.entity'
+import { extend } from 'dayjs'
+import { Menu } from '../../menus/entities/menu.entity'
+import { User } from '../../user/user.entity'
 import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm'
+import { BaseEntity } from '@/src/common/entities/base.entity'
 
-@Entity()
-export class Role {
-    @PrimaryGeneratedColumn()
-    id: number
-
+@Entity('roles')
+export class Role extends BaseEntity {
     @Column()
     name: string
 

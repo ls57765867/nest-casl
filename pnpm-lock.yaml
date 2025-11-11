@@ -59,6 +59,9 @@ dependencies:
   mysql2:
     specifier: ^3.15.2
     version: 3.15.2
+  nestjs-cls:
+    specifier: ^6.0.1
+    version: 6.0.1(@nestjs/common@11.1.8)(@nestjs/core@11.1.8)(reflect-metadata@0.2.2)(rxjs@7.8.1)
   nestjs-pino:
     specifier: ^4.4.1
     version: 4.4.1(@nestjs/common@11.1.8)(pino-http@11.0.0)(pino@10.1.0)(rxjs@7.8.1)
@@ -5098,6 +5101,21 @@ packages:
   /neo-async@2.6.2:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
     dev: true
+
+  /nestjs-cls@6.0.1(@nestjs/common@11.1.8)(@nestjs/core@11.1.8)(reflect-metadata@0.2.2)(rxjs@7.8.1):
+    resolution: {integrity: sha512-FnU8MI5/RKdbNvGmlUMD7nuFs7zUiueNzTjO+sxj7BJbsf7cUmosarppPLXRJ7C1WaZ/gLE9ZAcM6//0q1CQIA==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      '@nestjs/common': '>= 10 < 12'
+      '@nestjs/core': '>= 10 < 12'
+      reflect-metadata: '*'
+      rxjs: '>= 7'
+    dependencies:
+      '@nestjs/common': 11.1.8(class-transformer@0.5.1)(class-validator@0.14.2)(reflect-metadata@0.2.2)(rxjs@7.8.1)
+      '@nestjs/core': 11.1.8(@nestjs/common@11.1.8)(@nestjs/platform-express@11.0.1)(reflect-metadata@0.2.2)(rxjs@7.8.1)
+      reflect-metadata: 0.2.2
+      rxjs: 7.8.1
+    dev: false
 
   /nestjs-pino@4.4.1(@nestjs/common@11.1.8)(pino-http@11.0.0)(pino@10.1.0)(rxjs@7.8.1):
     resolution: {integrity: sha512-/E/JOtsUf/yHFGJx+zxBfwjCn1uJVV9AxSyx/mD0oNFCP+psvv9XE7WGh5Cebo6TwukF4qEu37eissGErVwLVg==}
